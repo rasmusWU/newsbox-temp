@@ -1,0 +1,57 @@
+article.articleLink {
+    height: 8%;
+    padding: 1em 2em;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    font-family: 'Roboto', sans-serif;
+    color: #324755;
+    border-bottom: #c8d1d3 1px solid;
+}
+
+.articleImg {
+    width: 100%;
+}
+
+.articleImg img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.articleText {
+    padding: 1em 3em;
+}
+
+.articleText h3 {
+    line-height: 1.5em;
+    font-weight: 700;
+    font-size: 1.7em;
+}
+
+.articleText p {
+    font-weight: 300;
+    line-height: 1.7em;
+    font-size: 1.1em;
+}
+
+section.sectionLink {
+    height: 3%;
+    padding: 1em 0 1em 2em;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: auto;
+    font-family: 'Roboto', sans-serif;
+    color: #324755;
+    border-bottom: #c8d1d3 1px solid;
+}
+
+section.sectionLink h3 {
+    padding: 0.7em 1em 0 1em;
+    font-size: 1.6em;
+}
+
+section.sectionLink i {
+    font-size: 2em;
+    padding-top: 0.7em;
+    padding-left: 0.5em;
+}
