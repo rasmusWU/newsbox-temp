@@ -2,6 +2,10 @@ nav.topNav div.hidden i {
     color: #ffffff;
 }
 
+nav.topNav div.hiddenD i {
+    color: rgb(43, 43, 43);
+}
+
 .settingsBody {
     background-color: #f0f3f4;
     font-family: 'Roboto', sans-serif;
@@ -88,3 +92,26 @@ nav.topNav div.hidden i {
 .settingsPage p {
     font-weight: 300;
 }
+
+.sliderArea {
+    background-color: #e0e5e5;
+    height: 40%;
+    width: 17%;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 0 3px;
+}
+
+div.moved {
+    flex-direction: row-reverse;
+    background-color: #87bcbf;
+}
+
+div.sliderArea div.slider {
+    background-color: #ffffff;
+    height: 90%;
+    width: 45%;
+    border-radius: 50%;
+}
+
