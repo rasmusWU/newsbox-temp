@@ -1,4 +1,4 @@
-nav.topNav {
+.topNav {
     background-color: #ffffff;
     height: 5%;
     width: 100%;
@@ -8,15 +8,21 @@ nav.topNav {
     justify-content: space-between;
     align-items: flex-start;
     padding: 1em 2em 2em 2em;
+    color: #324755;
 }
 
-nav.topNav h2 {
+.topNav div {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.topNav h2 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    color: #324755;
 }
 
-nav.topNav i.fas, i.fab {
-    color: #324755;
+.svg {
     font-size: 1.8em;
+    color: #324755;
 }

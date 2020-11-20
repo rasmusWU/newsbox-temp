@@ -1,20 +1,10 @@
-nav.topNav div.hidden i {
-    color: #ffffff;
-}
-
-nav.topNav div.hiddenD i {
-    color: rgb(43, 43, 43);
-}
-
-.settingsBody {
-    background-color: #f0f3f4;
-    font-family: 'Roboto', sans-serif;
-    color: #324755;
-}
+@import 'settings-darkmode.css';
 
 .settingsPage {
     height: 93vh;
     background-color: #f0f3f4;
+    color: #324755;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -78,7 +68,7 @@ nav.topNav div.hiddenD i {
     border-bottom: none;
 }
 
-.settingsPage button {
+.darkModeBtn {
     color: #324755;
     font-size: 1.5em;
     font-weight: 100;
@@ -95,8 +85,8 @@ nav.topNav div.hiddenD i {
 
 .sliderArea {
     background-color: #e0e5e5;
-    height: 40%;
-    width: 17%;
+    height: 50px;
+    width: 100px;
     border-radius: 25px;
     display: flex;
     align-items: center;
@@ -108,10 +98,10 @@ div.moved {
     background-color: #87bcbf;
 }
 
-div.sliderArea div.slider {
+.slider {
     background-color: #ffffff;
-    height: 90%;
-    width: 45%;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
 }
 

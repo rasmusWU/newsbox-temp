@@ -1,0 +1,31 @@
+div.settingsPageDark {
+    background-color: rgb(77, 77, 77);
+    color: rgb(141, 173, 184);
+}
+
+div.settingsPageDark h3 {
+    color: #ffffff;
+}
+
+div.newsSettingsDark {
+    background-color: rgb(27, 27, 27);
+}
+
+button.darkModeBtnDark {
+    background-color: rgb(77, 77, 77);
+    color: #fff;
+}
+
+nav.topNavDark {
+    background-color: rgb(27, 27, 27);
+    color: rgb(141, 173, 184);
+}
+
+.svgDark {
+    color: rgb(141, 173, 184);
+    font-size: 1.8em;
+}
+
+div.sliderAreaDark {
+    background-color: rgb(77, 77, 77);
+}

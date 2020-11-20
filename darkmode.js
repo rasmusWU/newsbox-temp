@@ -1,49 +1,49 @@
-darkModeBtn = document.getElementById("darkModeBtn");
-hiddenSVG = document.getElementsByClassName("hidden");
-body = document.getElementsByTagName("body");
-settingsBody = document.getElementsByClassName("settingsBody");
-settingsPage = document.getElementsByClassName("settingsPage");
+darkModeBtn = document.querySelector(".darkModeBtn");
+hiddenSVG = document.querySelector(".hidden");
+settingsPage = document.querySelector(".settingsPage");
+newsSettings = document.querySelector(".newsSettings");
+topNav = document.querySelector(".topNav");
+svg = document.querySelector(".fas");
 sliderArea = document.querySelectorAll(".sliderArea");
-
-slider1 = document.getElementById("slider1");
-slider2 = document.getElementById("slider2");
-slider3 = document.getElementById("slider3");
-slider4 = document.getElementById("slider4");
-slider5 = document.getElementById("slider5");
-
-
+slider = document.querySelectorAll(".slider");
 
 darkModeBtn.addEventListener("click", function (event) {
     if (window.localStorage.getItem("darkmode", "true")) {
         window.localStorage.removeItem("darkmode");
         darkModeBtn.innerHTML = "TOGGLE DARK MODE";
+        settingsPage.classList.remove("settingsPageDark");
+        newsSettings.classList.remove("newsSettingsDark");
+        darkModeBtn.classList.remove("darkModeBtnDark");
+        topNav.classList.remove("topNavDark");
+        svg.classList.remove("svgDark");
+        svg.classList.add("svg");
+        sliderArea.forEach(function (area) {
+            area.classList.remove("sliderAreaDark");
+        });
     } else {
         window.localStorage.setItem("darkmode", "true");
         darkModeBtn.innerHTML = "TOGGLE LIGHT MODE";
+        settingsPage.classList.add("settingsPageDark");
+        newsSettings.classList.add("newsSettingsDark");
+        darkModeBtn.classList.add("darkModeBtnDark");
+        topNav.classList.add("topNavDark");
+        svg.classList.add("svgDark");
+        svg.classList.remove("svg");
+        sliderArea.forEach(function (area) {
+            area.classList.add("sliderAreaDark");
+        });
     }
 });
 
 if (window.localStorage.getItem("darkmode", "true")) {
     darkModeBtn.innerHTML = "TOGGLE LIGHT MODE";
+    settingsPage.classList.add("settingsPageDark");
+    newsSettings.classList.add("newsSettingsDark");
+    darkModeBtn.classList.add("darkModeBtnDark");
+    topNav.classList.add("topNavDark");
+    svg.classList.add("svgDark");
+    svg.classList.remove("svg");
+    sliderArea.forEach(function (area) {
+        area.classList.add("sliderAreaDark");
+    });
 }
-
-slider1.addEventListener("click", function (move) {
-    slider1.classList.toggle("moved");
-    
-});
-
-slider2.addEventListener("click", function (move) {
-    slider2.classList.toggle("moved");
-});
-
-slider3.addEventListener("click", function (move) {
-    slider3.classList.toggle("moved");
-});
-
-slider4.addEventListener("click", function (move) {
-    slider4.classList.toggle("moved");
-});
-
-slider5.addEventListener("click", function (move) {
-    slider5.classList.toggle("moved");
-});
