@@ -1,4 +1,4 @@
-nav.searchNav {
+.searchNav {
     background-color: #ffffff;
     height: 130px;
     width: 100%;
@@ -25,7 +25,7 @@ nav.searchNav {
     height: 100%;
 }
 
-input.searchNav__searchBar {
+.searchNav__searchBar {
     background-color: #f0f3f4;
     border: 1px solid #f0f3f4;
     width: 85%;
@@ -38,7 +38,7 @@ input.searchNav__searchBar {
     font-weight: 300;
 }
 
-button.searchNav__searchBtn {
+.searchNav__searchBtn {
     position: relative;
     display: flex;
     justify-content: center;

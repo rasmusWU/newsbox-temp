@@ -5,21 +5,71 @@ slider4 = document.getElementById("slider4");
 slider5 = document.getElementById("slider5");
 
 slider1.addEventListener("click", function (move) {
-    slider1.classList.toggle("moved");  
+    if (window.localStorage.getItem("europe", "on")) {
+        window.localStorage.removeItem("europe");
+    slider1.classList.remove("moved");
+} else {
+    window.localStorage.setItem("europe", "on");
+    slider1.classList.add("moved");
+}
 });
+
+if (window.localStorage.getItem("europe", "on")) {
+    slider1.classList.add("moved");
+}
 
 slider2.addEventListener("click", function (move) {
-    slider2.classList.toggle("moved");
+    if (window.localStorage.getItem("health", "on")) {
+        window.localStorage.removeItem("health");
+        slider2.classList.remove("moved");
+    } else {
+        window.localStorage.setItem("health", "on");
+        slider2.classList.add("moved");
+    }
 });
+
+if (window.localStorage.getItem("europe", "on")) {
+    slider2.classList.add("moved");
+}
 
 slider3.addEventListener("click", function (move) {
-    slider3.classList.toggle("moved");
+    if (window.localStorage.getItem("sport", "on")) {
+        window.localStorage.removeItem("sport");
+        slider3.classList.remove("moved");
+    } else {
+        window.localStorage.setItem("sport", "on");
+        slider3.classList.add("moved");
+    }
 });
+
+if (window.localStorage.getItem("sport", "on")) {
+    slider3.classList.add("moved");
+}
 
 slider4.addEventListener("click", function (move) {
-    slider4.classList.toggle("moved");
+    if (window.localStorage.getItem("business", "on")) {
+        window.localStorage.removeItem("business");
+        slider4.classList.remove("moved");
+    } else {
+        window.localStorage.setItem("business", "on");
+        slider4.classList.add("moved");
+    }
 });
 
+if (window.localStorage.getItem("business", "on")) {
+    slider4.classList.add("moved");
+}
+
 slider5.addEventListener("click", function (move) {
-    slider5.classList.toggle("moved");
+    if (window.localStorage.getItem("travel", "on")) {
+        window.localStorage.removeItem("travel");
+        slider5.classList.remove("moved");
+    } else {
+        window.localStorage.setItem("travel", "on");
+        slider5.classList.add("moved");
+    }
 });
+
+if (window.localStorage.getItem("travel", "on")) {
+    slider5.classList.add("moved");
+}

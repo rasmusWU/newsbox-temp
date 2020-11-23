@@ -3,13 +3,10 @@
 @import url('articlesection.css');
 @import url('topnav.css');
 @import url('settings.css');
+@import url('darkmode.css');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    background-color: #ffffff;
 }

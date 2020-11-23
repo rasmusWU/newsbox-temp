@@ -1,4 +1,4 @@
-article.articleLink {
+.articleLink {
     height: 8%;
     padding: 1em 2em;
     display: grid;
@@ -34,7 +34,7 @@ article.articleLink {
     font-size: 1.1em;
 }
 
-section.sectionLink {
+.sectionLink {
     height: 3%;
     padding: 1em 0 1em 2em;
     display: grid;
@@ -45,12 +45,12 @@ section.sectionLink {
     border-bottom: #c8d1d3 1px solid;
 }
 
-section.sectionLink h3 {
+.sectionLink h3 {
     padding: 0.7em 1em 0 1em;
     font-size: 1.6em;
 }
 
-section.sectionLink i {
+.sectionLink i {
     font-size: 2em;
     padding-top: 0.7em;
     padding-left: 0.5em;
