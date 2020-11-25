@@ -23,22 +23,28 @@
             </form>
         </div>
     </nav>
-    <section class="sectionLink">
+
+    <!-- <section class="sectionLink">
         <div class="articleImg">
             <img src="img/300C.png" alt="">
         </div>
         <h3>CATEGORY</h3>
         <i class="fas fa-chevron-down"></i>
-    </section>
+    </section> -->
+
+    <div class="articleList"></div>
+
+    <template id="template">
     <article class="articleLink">
         <div class="articleImg">
-            <img src="img/300C.png" alt="">
+            <img class="articleImg" src="img/300C.png" alt="">
         </div>
         <div class="articleText">
-            <h3>Headline</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolores repellat ex sit quam.</p>
+            <h3 class="articleHeader"></h3>
+            <p class="articleDetails"></p>
         </div>
     </article>
+</template>
     <script src="darkmode-index.js"></script>
     <script src="fetch.js" type="module" refer></script>
 </body>
