@@ -5,30 +5,30 @@ slider4 = document.getElementById("slider4");
 slider5 = document.getElementById("slider5");
 
 slider1.addEventListener("click", function (move) {
-    if (window.localStorage.getItem("europe", "on")) {
-        window.localStorage.removeItem("europe");
+    if (window.localStorage.getItem("us", "on")) {
+        window.localStorage.removeItem("us");
     slider1.classList.remove("moved");
 } else {
-    window.localStorage.setItem("europe", "on");
+    window.localStorage.setItem("us", "on");
     slider1.classList.add("moved");
 }
 });
 
-if (window.localStorage.getItem("europe", "on")) {
+if (window.localStorage.getItem("us", "on")) {
     slider1.classList.add("moved");
 }
 
 slider2.addEventListener("click", function (move) {
-    if (window.localStorage.getItem("health", "on")) {
-        window.localStorage.removeItem("health");
+    if (window.localStorage.getItem("world", "on")) {
+        window.localStorage.removeItem("world");
         slider2.classList.remove("moved");
     } else {
-        window.localStorage.setItem("health", "on");
+        window.localStorage.setItem("world", "on");
         slider2.classList.add("moved");
     }
 });
 
-if (window.localStorage.getItem("europe", "on")) {
+if (window.localStorage.getItem("world", "on")) {
     slider2.classList.add("moved");
 }
 

@@ -7,7 +7,8 @@
           console.log(data.results);
 
           var template = document.getElementById("template");
-          var articleList = document.querySelector(".articleList");
+          var articleListUS = document.querySelector(".articleList__US");
+          var articleListWorld = document.querySelector(".articleList__world");
 
           data.results.forEach(function (result) {
             var clone = template.content.cloneNode(true);
@@ -17,16 +18,21 @@
             var details = clone.querySelector(".articleDetails");
 
             header.innerText = result.title;
-            header.classList.add("articleHeaderDark");
             details.innerText = result.abstract;
-            details.classList.add("articleDetailsDark");
 
-            if (window.localStorage.getItem("europe")) {
-            if (result.section == "us") {
-            articleList.appendChild(clone);
+            if (window.localStorage.getItem("darkmode", "true")) {
+              header.classList.add("articleHeaderDark");
+              details.classList.add("articleDetailsDark");
+            }
 
-          }
-        }
+            if (window.localStorage.getItem("us", "on") && result.section == "us") {
+              articleListUS.appendChild(clone);
+            };
+
+            if (window.localStorage.getItem("world", "on") && result.section == "world") {
+              articleListWorld.appendChild(clone);
+            };
+
           })
         });
     }

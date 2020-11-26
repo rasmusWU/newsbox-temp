@@ -28,10 +28,4 @@ if (window.localStorage.getItem("darkmode", "true")) {
     });
     body.style.backgroundColor = "#161616";
     blackSVG.style.color = "#181818";
-    header.forEach(function (area) {
-        area.classList.add("articleHeaderDark");
-    });
-    details.forEach(function (area) {
-        area.classList.add("articleDetailsDark");
-    });
 }
