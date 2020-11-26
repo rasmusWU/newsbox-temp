@@ -1,12 +1,13 @@
-topNav = document.querySelector(".topNav");
-svg = document.querySelectorAll(".fas");
-search = document.querySelector(".searchNav");
-searchInput = document.querySelector(".searchNav__searchBar");
-searchBtn = document.querySelector(".searchNav__searchBtn");
-blackSVG = document.querySelector(".fa-search");
-section = document.querySelectorAll(".sectionLink");
-article = document.querySelectorAll(".articleLink");
-body = document.querySelector("body");
+var topNav = document.querySelector(".topNav");
+var svg = document.querySelectorAll(".fas");
+var search = document.querySelector(".searchNav");
+var searchInput = document.querySelector(".searchNav__searchBar");
+var searchBtn = document.querySelector(".searchNav__searchBtn");
+var blackSVG = document.querySelector(".fa-search");
+var section = document.querySelectorAll(".sectionLink");
+var article = document.querySelectorAll(".articleLink");
+var body = document.querySelector("body");
+
 
 
 
@@ -27,4 +28,10 @@ if (window.localStorage.getItem("darkmode", "true")) {
     });
     body.style.backgroundColor = "#161616";
     blackSVG.style.color = "#181818";
+    header.forEach(function (area) {
+        area.classList.add("articleHeaderDark");
+    });
+    details.forEach(function (area) {
+        area.classList.add("articleDetailsDark");
+    });
 }

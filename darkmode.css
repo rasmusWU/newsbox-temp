@@ -55,3 +55,11 @@ button.searchNav__searchBtnDark {
     background-color: #2b2b2b;
     border: 1px solid #2b2b2b;
 }
+
+div.articleText h3.articleHeaderDark {
+    color: #ffffff;
+}
+
+div.articleText p.articleDetailsDark {
+    color: #ffffff;
+}
