@@ -33,16 +33,16 @@ if (window.localStorage.getItem("world", "on")) {
 }
 
 slider3.addEventListener("click", function (move) {
-    if (window.localStorage.getItem("sport", "on")) {
-        window.localStorage.removeItem("sport");
+    if (window.localStorage.getItem("health", "on")) {
+        window.localStorage.removeItem("health");
         slider3.classList.remove("moved");
     } else {
-        window.localStorage.setItem("sport", "on");
+        window.localStorage.setItem("health", "on");
         slider3.classList.add("moved");
     }
 });
 
-if (window.localStorage.getItem("sport", "on")) {
+if (window.localStorage.getItem("health", "on")) {
     slider3.classList.add("moved");
 }
 

@@ -4,6 +4,7 @@
 @import url('topnav.css');
 @import url('settings.css');
 @import url('darkmode.css');
+@import url('category-hide.css');
 
 * {
     margin: 0;
