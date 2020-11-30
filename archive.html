@@ -27,61 +27,61 @@
         <div class="articleImg">
             <img src="img/300C.png" alt="">
         </div>
-        <h3>CATEGORY</h3>
-        <i class="fas fa-chevron-down"></i>
+        <h3>UNITED STATES</h3>
+        <i class="fas fa-chevron-down displayToggleUS"></i>
     </section>
-    <article class="articleLink">
-        <div class="articleImg">
-            <img src="img/300C.png" alt="">
-        </div>
-        <div class="articleText">
-            <h3>Headline</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolores repellat ex sit quam.</p>
-        </div>
-    </article>
+    <div class="articleList archiveList__US"></div>
     <section class="sectionLink">
         <div class="articleImg">
             <img src="img/300C.png" alt="">
         </div>
-        <h3>CATEGORY</h3>
-        <i class="fas fa-chevron-down"></i>
+        <h3>GLOBAL</h3>
+        <i class="fas fa-chevron-down displayToggleGlobal"></i>
     </section>
-    <article class="articleLink">
+    <div class="articleList archiveList__world"></div>
+    <section class="sectionLink">
         <div class="articleImg">
             <img src="img/300C.png" alt="">
         </div>
-        <div class="articleText">
-            <h3>Headline</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolores repellat ex sit quam.</p>
-        </div>
-    </article>
-    <article class="articleLink">
+        <h3>HEALTH</h3>
+        <i class="fas fa-chevron-down displayToggleHealth"></i>
+    </section>
+    <div class="articleList archiveList__health"></div>
+    <section class="sectionLink">
         <div class="articleImg">
             <img src="img/300C.png" alt="">
         </div>
-        <div class="articleText">
-            <h3>Headline</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolores repellat ex sit quam.</p>
-        </div>
-    </article>
-    <article class="articleLink">
+        <h3>BUSINESS</h3>
+        <i class="fas fa-chevron-down displayToggleBusiness"></i>
+    </section>
+    <div class="articleList archiveList__business"></div>
+    <section class="sectionLink ">
         <div class="articleImg">
             <img src="img/300C.png" alt="">
         </div>
-        <div class="articleText">
-            <h3>Headline</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolores repellat ex sit quam.</p>
+        <h3>TRAVEL</h3>
+        <i class="fas fa-chevron-down displayToggleTravel"></i>
+    </section>
+    <div class="articleList archiveList__travel"></div>
+
+    <template id="template">
+        <div class="articleFull">
+            <div class="archiveToggle"></div>
+            <article class="articleLink">
+                <div class="articleImg">
+                    <img class="articleImg" src="img/300C.png" alt="">
+                </div>
+                <div class="articleText">
+                    <h3 class="articleHeader"></h3>
+                    <p class="articleDetails"></p>
+                    <p class="articleDate"></p>
+                </div>
+                <button class="archiveBtn"></button>
+            </article>
+            <div class="deleteToggle"></div>
         </div>
-    </article>
-    <article class="articleLink">
-        <div class="articleImg">
-            <img src="img/300C.png" alt="">
-        </div>
-        <div class="articleText">
-            <h3>Headline</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolores repellat ex sit quam.</p>
-        </div>
-    </article>
+    </template>
+
     <script src="darkmode-index.js"></script>
     <script src="fetch.js" type="module" refer></script>
 </body>
