@@ -19,13 +19,16 @@ var articleListTravel = document.querySelector(".articleList__travel");
             var img = clone.querySelector(".articleImg");
             var header = clone.querySelector(".articleHeader");
             var details = clone.querySelector(".articleDetails");
+            var date = clone.querySelector(".articleDate");
 
             header.innerText = result.title;
             details.innerText = result.abstract;
+            date.innerText = result.published_date;
 
             if (window.localStorage.getItem("darkmode", "true")) {
               header.classList.add("articleHeaderDark");
               details.classList.add("articleDetailsDark");
+              date.classList.add("articleDateDark");
             }
 
             if (window.localStorage.getItem("us", "on") && result.section == "us") {

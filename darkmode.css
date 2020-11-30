@@ -63,3 +63,7 @@ div.articleText h3.articleHeaderDark {
 div.articleText p.articleDetailsDark {
     color: #ffffff;
 }
+
+div.articleText p.articleDateDark {
+    color: #ffffff;
+}
