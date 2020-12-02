@@ -13,69 +13,69 @@ var displayToggleGlobal = document.querySelector(".displayToggleGlobal");
 var displayToggleHealth = document.querySelector(".displayToggleHealth");
 var displayToggleBusiness = document.querySelector(".displayToggleBusiness");
 var displayToggleTravel = document.querySelector(".displayToggleTravel");
-    
-    function fetchNews() {
-      fetch("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=AZMibVeu6yQZlX6GCRiPHXXdeY4mATfY")
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          console.log(data.results);
 
-          if (!window.localStorage.getItem("savedArticles")) {
-            var array = [];
-            array = JSON.stringify(array);
-            window.localStorage.setItem("savedArticles", array);
-          }
+function fetchNews() {
+  fetch("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=AZMibVeu6yQZlX6GCRiPHXXdeY4mATfY")
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data.results);
 
-          data.results.forEach(function (result) {
-            var clone = template.content.cloneNode(true);
+      if (!window.localStorage.getItem("savedArticles")) {
+        var array = [];
+        array = JSON.stringify(array);
+        window.localStorage.setItem("savedArticles", array);
+      }
 
-            var img = clone.querySelector(".articleImg");
-            var header = clone.querySelector(".articleHeader");
-            var details = clone.querySelector(".articleDetails");
-            var date = clone.querySelector(".articleDate");
-            var btn = clone.querySelector(".archiveBtn");
-            btn.addEventListener("click", archiveBtnClick);
+      data.results.forEach(function (result) {
+        var clone = template.content.cloneNode(true);
 
-            btn.dataset.title = result.title;
-            btn.dataset.abstract = result.abstract;
-            btn.dataset.published_date = result.published_date;
-            btn.dataset.section = result.section;
+        var img = clone.querySelector(".articleImg");
+        var header = clone.querySelector(".articleHeader");
+        var details = clone.querySelector(".articleDetails");
+        var date = clone.querySelector(".articleDate");
+        var btn = clone.querySelector(".archiveBtn");
+        btn.addEventListener("click", archiveBtnClick);
 
-            header.innerText = result.title;
-            details.innerText = result.abstract;
-            date.innerText = result.published_date;
+        btn.dataset.title = result.title;
+        btn.dataset.abstract = result.abstract;
+        btn.dataset.published_date = result.published_date;
+        btn.dataset.section = result.section;
 
-            if (window.localStorage.getItem("darkmode", "true")) {
-              header.classList.add("articleHeaderDark");
-              details.classList.add("articleDetailsDark");
-              date.classList.add("articleDateDark");
-            }
+        header.innerText = result.title;
+        details.innerText = result.abstract;
+        date.innerText = result.published_date;
 
-            if (articleListUS && window.localStorage.getItem("us", "on") && result.section == "us") {
-              articleListUS.appendChild(clone);
-            }
+        if (window.localStorage.getItem("darkmode", "true")) {
+          header.classList.add("articleHeaderDark");
+          details.classList.add("articleDetailsDark");
+          date.classList.add("articleDateDark");
+        }
 
-            if (articleListWorld && window.localStorage.getItem("world", "on") && result.section == "world") {
-              articleListWorld.appendChild(clone);
-            }
+        if (articleListUS && window.localStorage.getItem("us", "on") && result.section == "us") {
+          articleListUS.appendChild(clone);
+        }
 
-            if (articleListHealth && window.localStorage.getItem("health", "on") && result.section == "health") {
-              articleListHealth.appendChild(clone);
-            }
+        if (articleListWorld && window.localStorage.getItem("world", "on") && result.section == "world") {
+          articleListWorld.appendChild(clone);
+        }
 
-            if (articleListBusiness && window.localStorage.getItem("business", "on") && result.section == "business") {
-              articleListBusiness.appendChild(clone);
-            }
+        if (articleListHealth && window.localStorage.getItem("health", "on") && result.section == "health") {
+          articleListHealth.appendChild(clone);
+        }
 
-            if (articleListTravel && window.localStorage.getItem("travel", "on") && result.section == "travel") {
-              articleListTravel.appendChild(clone);
-            }
+        if (articleListBusiness && window.localStorage.getItem("business", "on") && result.section == "business") {
+          articleListBusiness.appendChild(clone);
+        }
 
-          });
-        });
-    }
+        if (articleListTravel && window.localStorage.getItem("travel", "on") && result.section == "travel") {
+          articleListTravel.appendChild(clone);
+        }
+
+      });
+    });
+}
 if (page == "Newsbox") {
   fetchNews();
 
@@ -101,13 +101,20 @@ if (page == "Newsbox") {
 }
 
 
-function archiveBtnClick (event) {
-      var savedArticles = window.localStorage.getItem("savedArticles");
-      savedArticles = JSON.parse(savedArticles);
-      savedArticles.push(event.target.dataset);
-      console.log(JSON.stringify(savedArticles))
-      window.localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
-    };
+function archiveBtnClick(event) {
+  var savedArticles = window.localStorage.getItem("savedArticles");
+  savedArticles = JSON.parse(savedArticles);
+  var multiplyCheck = false;
+  savedArticles.forEach(function (article) {
+    if (event.target.dataset.title == article.title) {
+      multiplyCheck = true;
+    }
+  });
+  if (multiplyCheck == true) return;
+  savedArticles.push(event.target.dataset);
+  console.log(JSON.stringify(savedArticles));
+  window.localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
+};
 
 
 
@@ -124,8 +131,9 @@ if (page == "Archive") {
   savedArticles = JSON.parse(savedArticles);
   console.log(savedArticles);
 
-  savedArticles.forEach(function (result) {
 
+  for (var i = 0; i < savedArticles.length; i++) {
+    savedArticles[i]
     var clone = template.content.cloneNode(true);
 
     var img = clone.querySelector(".articleImg");
@@ -140,49 +148,62 @@ if (page == "Archive") {
       date.classList.add("articleDateDark");
     }
 
-    if (archiveListUS && result.section == "us") {
+    if (archiveListUS && savedArticles[i].section == "us") {
       archiveListUS.appendChild(clone);
     }
 
-    if (archiveListWorld && result.section == "world") {
+    if (archiveListWorld && savedArticles[i].section == "world") {
       archiveListWorld.appendChild(clone);
     }
 
-    if (archiveListHealth && result.section == "health") {
+    if (archiveListHealth && savedArticles[i].section == "health") {
       archiveListHealth.appendChild(clone);
     }
 
-    if (archiveListBusiness && result.section == "business") {
+    if (archiveListBusiness && savedArticles[i].section == "business") {
       archiveListBusiness.appendChild(clone);
     }
 
-    if (archiveListTravel && result.section == "travel") {
+    if (archiveListTravel && savedArticles[i].section == "travel") {
       archiveListTravel.appendChild(clone);
     }
-  
-    header.innerText = result.title;
-    details.innerText = result.abstract;
-    date.innerText = result.published_date;
-  });
 
-  displayToggleUS.addEventListener("click", function (hide) {
-    archiveListUS.classList.toggle("categoryDisplayOff");
-  });
+    header.innerText = savedArticles[i].title;
+    details.innerText = savedArticles[i].abstract;
+    date.innerText = savedArticles[i].published_date;
 
-  displayToggleGlobal.addEventListener("click", function (hide) {
-    archiveListWorld.classList.toggle("categoryDisplayOff");
-  });
+    btn.addEventListener("click", deleteBtnClick);
 
-  displayToggleHealth.addEventListener("click", function (hide) {
-    archiveListHealth.classList.toggle("categoryDisplayOff");
-  });
+    displayToggleUS.addEventListener("click", function (hide) {
+      archiveListUS.classList.toggle("categoryDisplayOff");
+    });
 
-  displayToggleBusiness.addEventListener("click", function (hide) {
-    archiveListBusiness.classList.toggle("categoryDisplayOff");
-  });
+    displayToggleGlobal.addEventListener("click", function (hide) {
+      archiveListWorld.classList.toggle("categoryDisplayOff");
+    });
 
-  displayToggleTravel.addEventListener("click", function (hide) {
-    archiveListTravel.classList.toggle("categoryDisplayOff");
-  });
+    displayToggleHealth.addEventListener("click", function (hide) {
+      archiveListHealth.classList.toggle("categoryDisplayOff");
+    });
+
+    displayToggleBusiness.addEventListener("click", function (hide) {
+      archiveListBusiness.classList.toggle("categoryDisplayOff");
+    });
+
+    displayToggleTravel.addEventListener("click", function (hide) {
+      archiveListTravel.classList.toggle("categoryDisplayOff");
+    });
+
+    btn.dataset.index = i;
+  }
+
+  function deleteBtnClick(event) {
+    console.log(event.target.dataset.index);
+    var index = event.target.dataset.index;
+
+    savedArticles.splice(index, 1);
+    savedArticles = JSON.stringify(savedArticles);
+    window.localStorage.setItem("savedArticles", savedArticles);
+    location.reload();
+  }
 }
-
