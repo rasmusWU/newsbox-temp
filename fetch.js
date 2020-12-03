@@ -14,6 +14,8 @@ var displayToggleHealth = document.querySelector(".displayToggleHealth");
 var displayToggleBusiness = document.querySelector(".displayToggleBusiness");
 var displayToggleTravel = document.querySelector(".displayToggleTravel");
 
+var target;
+
 function fetchNews() {
   fetch("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=AZMibVeu6yQZlX6GCRiPHXXdeY4mATfY")
     .then(function (response) {
@@ -72,7 +74,6 @@ function fetchNews() {
         if (articleListTravel && window.localStorage.getItem("travel", "on") && result.section == "travel") {
           articleListTravel.appendChild(clone);
         }
-
       });
     });
 }
@@ -115,8 +116,6 @@ function archiveBtnClick(event) {
   console.log(JSON.stringify(savedArticles));
   window.localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
 };
-
-
 
 if (page == "Archive") {
   var template = document.getElementById("template");
@@ -174,28 +173,28 @@ if (page == "Archive") {
 
     btn.addEventListener("click", deleteBtnClick);
 
-    displayToggleUS.addEventListener("click", function (hide) {
-      archiveListUS.classList.toggle("categoryDisplayOff");
-    });
-
-    displayToggleGlobal.addEventListener("click", function (hide) {
-      archiveListWorld.classList.toggle("categoryDisplayOff");
-    });
-
-    displayToggleHealth.addEventListener("click", function (hide) {
-      archiveListHealth.classList.toggle("categoryDisplayOff");
-    });
-
-    displayToggleBusiness.addEventListener("click", function (hide) {
-      archiveListBusiness.classList.toggle("categoryDisplayOff");
-    });
-
-    displayToggleTravel.addEventListener("click", function (hide) {
-      archiveListTravel.classList.toggle("categoryDisplayOff");
-    });
-
     btn.dataset.index = i;
   }
+
+  displayToggleUS.addEventListener("click", function (hide) {
+    archiveListUS.classList.toggle("categoryDisplayOff");
+  });
+
+  displayToggleGlobal.addEventListener("click", function (hide) {
+    archiveListWorld.classList.toggle("categoryDisplayOff");
+  });
+
+  displayToggleHealth.addEventListener("click", function (hide) {
+    archiveListHealth.classList.toggle("categoryDisplayOff");
+  });
+
+  displayToggleBusiness.addEventListener("click", function (hide) {
+    archiveListBusiness.classList.toggle("categoryDisplayOff");
+  });
+
+  displayToggleTravel.addEventListener("click", function (hide) {
+    archiveListTravel.classList.toggle("categoryDisplayOff");
+  });
 
   function deleteBtnClick(event) {
     console.log(event.target.dataset.index);
@@ -207,3 +206,27 @@ if (page == "Archive") {
     location.reload();
   }
 }
+
+var xStart, xEnd, yStart, yEnd;
+var tolerance = 50;
+
+window.addEventListener("touchstart", function(event) {
+    xStart = event.changedTouches[0].pageX;
+    yStart = event.changedTouches[0].pageY;
+    target = event.target;
+    while (target.classList && !target.classList.contains("articleFull")) {
+      if (target.parentNode == null) {
+        break;
+      }
+      target = target.parentNode;
+    }
+});
+
+window.addEventListener("touchend", function(event) {
+    xEnd = event.changedTouches[0].pageX;
+    yEnd = event.changedTouches[0].pageY;
+    
+    if (xEnd < (xStart - tolerance) && target != document) {
+        target.classList.add("moved");
+    }
+});
