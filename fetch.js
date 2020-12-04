@@ -33,18 +33,21 @@ function fetchNews() {
       data.results.forEach(function (result) {
         var clone = template.content.cloneNode(true);
 
-        var img = clone.querySelector(".articleImg");
+        var img = clone.querySelector("img.articleImg");
         var header = clone.querySelector(".articleHeader");
         var details = clone.querySelector(".articleDetails");
         var date = clone.querySelector(".articleDate");
         var btn = clone.querySelector(".archiveBtn");
+        var svg = clone.querySelector(".archiveSvg");
         btn.addEventListener("click", archiveBtnClick);
 
+        btn.dataset.img = result.multimedia[0].url;
         btn.dataset.title = result.title;
         btn.dataset.abstract = result.abstract;
         btn.dataset.published_date = result.published_date;
         btn.dataset.section = result.section;
 
+        img.src = result.multimedia[0].url;
         header.innerText = result.title;
         details.innerText = result.abstract;
         date.innerText = result.published_date;
@@ -82,23 +85,50 @@ if (page == "Newsbox") {
 
   displayToggleUS.addEventListener("click", function (hide) {
     articleListUS.classList.toggle("categoryDisplayOff");
+    displayToggleUS.classList.toggle("rotated");
   });
 
   displayToggleGlobal.addEventListener("click", function (hide) {
     articleListWorld.classList.toggle("categoryDisplayOff");
+    displayToggleGlobal.classList.toggle("rotated");
   });
 
   displayToggleHealth.addEventListener("click", function (hide) {
     articleListHealth.classList.toggle("categoryDisplayOff");
+    displayToggleHealth.classList.toggle("rotated");
   });
 
   displayToggleBusiness.addEventListener("click", function (hide) {
     articleListBusiness.classList.toggle("categoryDisplayOff");
+    displayToggleBusiness.classList.toggle("rotated");
   });
 
   displayToggleTravel.addEventListener("click", function (hide) {
     articleListTravel.classList.toggle("categoryDisplayOff");
+    displayToggleTravel.classList.toggle("rotated");
   });
+
+  var sectionLinkUS = document.querySelector(".sectionLinkUS");
+  var sectionLinkGlobal = document.querySelector(".sectionLinkGlobal");
+  var sectionLinkHealth = document.querySelector(".sectionLinkHealth");
+  var sectionLinkBusiness = document.querySelector(".sectionLinkBusiness");
+  var sectionLinkTravel = document.querySelector(".sectionLinkTravel");
+
+  if (!window.localStorage.getItem("us")) {
+    sectionLinkUS.classList.add("sectionLinkHidden");
+  }
+  if (!window.localStorage.getItem("world")) {
+    sectionLinkGlobal.classList.add("sectionLinkHidden");
+  }
+  if (!window.localStorage.getItem("health")) {
+    sectionLinkHealth.classList.add("sectionLinkHidden");
+  }
+  if (!window.localStorage.getItem("business")) {
+    sectionLinkBusiness.classList.add("sectionLinkHidden");
+  }
+  if (!window.localStorage.getItem("travel")) {
+    sectionLinkTravel.classList.add("sectionLinkHidden");
+  }
 }
 
 
@@ -135,7 +165,7 @@ if (page == "Archive") {
     savedArticles[i]
     var clone = template.content.cloneNode(true);
 
-    var img = clone.querySelector(".articleImg");
+    var img = clone.querySelector("img.articleImg");
     var header = clone.querySelector(".articleHeader");
     var details = clone.querySelector(".articleDetails");
     var date = clone.querySelector(".articleDate");
@@ -167,6 +197,7 @@ if (page == "Archive") {
       archiveListTravel.appendChild(clone);
     }
 
+    img.src = savedArticles[i].img;
     header.innerText = savedArticles[i].title;
     details.innerText = savedArticles[i].abstract;
     date.innerText = savedArticles[i].published_date;
@@ -178,22 +209,27 @@ if (page == "Archive") {
 
   displayToggleUS.addEventListener("click", function (hide) {
     archiveListUS.classList.toggle("categoryDisplayOff");
+    displayToggleUS.classList.toggle("rotated");
   });
 
   displayToggleGlobal.addEventListener("click", function (hide) {
     archiveListWorld.classList.toggle("categoryDisplayOff");
+    displayToggleGlobal.classList.toggle("rotated");
   });
 
   displayToggleHealth.addEventListener("click", function (hide) {
     archiveListHealth.classList.toggle("categoryDisplayOff");
+    displayToggleHealth.classList.toggle("rotated");
   });
 
   displayToggleBusiness.addEventListener("click", function (hide) {
     archiveListBusiness.classList.toggle("categoryDisplayOff");
+    displayToggleBusiness.classList.toggle("rotated");
   });
 
   displayToggleTravel.addEventListener("click", function (hide) {
     archiveListTravel.classList.toggle("categoryDisplayOff");
+    displayToggleTravel.classList.toggle("rotated");
   });
 
   function deleteBtnClick(event) {
@@ -210,23 +246,27 @@ if (page == "Archive") {
 var xStart, xEnd, yStart, yEnd;
 var tolerance = 50;
 
-window.addEventListener("touchstart", function(event) {
-    xStart = event.changedTouches[0].pageX;
-    yStart = event.changedTouches[0].pageY;
-    target = event.target;
-    while (target.classList && !target.classList.contains("articleFull")) {
-      if (target.parentNode == null) {
-        break;
-      }
-      target = target.parentNode;
+window.addEventListener("touchstart", function (event) {
+  xStart = event.changedTouches[0].pageX;
+  yStart = event.changedTouches[0].pageY;
+  target = event.target;
+  while (target.classList && !target.classList.contains("articleFull")) {
+    if (target.parentNode == null) {
+      break;
     }
+    target = target.parentNode;
+  }
 });
 
-window.addEventListener("touchend", function(event) {
-    xEnd = event.changedTouches[0].pageX;
-    yEnd = event.changedTouches[0].pageY;
-    
-    if (xEnd < (xStart - tolerance) && target != document) {
-        target.classList.add("moved");
-    }
+window.addEventListener("touchend", function (event) {
+  xEnd = event.changedTouches[0].pageX;
+  yEnd = event.changedTouches[0].pageY;
+
+  if (xEnd < (xStart - tolerance) && target != document) {
+    target.classList.add("moved");
+  }
+
+  if (xStart < (xEnd - tolerance) && target != document) {
+    target.classList.remove("moved");
+  }
 });
